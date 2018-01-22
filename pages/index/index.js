@@ -8,8 +8,8 @@ Page({
     userInfo: {},
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
-    arrayL: [{ id: '1', itemName: '美食', path: '../../static/image/food.jpg', url: '../home/home' }, { id: '1', itemName: '地图', path: '../../static/image/food2.jpg', url: '../map/map' }, 
-      { id: '1', itemName: '记录', path: '../../static/image/food3.png', url: '../pic/pic' }, { id: '1', itemName: '关于', path: '../../static/image/food4.png', url: '../form/form'}]
+    arrayL: [{ id: '1', itemName: '爱の美食', path: '../../static/image/food.jpg', url: '../home/home' }, { id: '2', itemName: '爱の地图', path: '../../static/image/food2.jpg', url: '../map/map' }, 
+      { id: '3', itemName: '爱の记录', path: '../../static/image/food3.png', url: '../pic/pic' }, { id: '4', itemName: '爱の计时', path: '../../static/image/food4.png', url: '../form/form'}]
   },
   //事件处理函数
   bindViewTap: function () {

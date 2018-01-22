@@ -12,7 +12,7 @@
     <text class="user-motto" bindtap="next">{{motto}}</text>
   </view> -->
   <view class='userStart'>
-  <view wx:for="{{arrayL}}" class='listA' bindtap="next">
+  <view wx:for="{{arrayL}}" wx:key="id" class='listA' bindtap="next">
   <image src='{{item.path}}' class='bkimg1'  data-hi="{{item.url}}"></image>
   <view>{{item.itemName}}</view>
   </view>

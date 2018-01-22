@@ -17,7 +17,7 @@
 }
 
 .userinfo-nickname {
-  color: #aaa;
+  color: #e0658f;
    position: absolute;
   top:250px;
 }
@@ -39,6 +39,18 @@
 .listA{
   width: 49%;
   text-align: center
+}
+.listA:first-child{
+  color: #d8852b
+}
+.listA:nth-child(2){
+  color: #ea6b3c
+}
+.listA:nth-child(3){
+  color: #465d2d
+}
+.listA:last-child{
+  color: #76b828
 }
 /** wxss **/
 /** 修改button默认的点击态样式类**/

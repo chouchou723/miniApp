@@ -1,49 +1,106 @@
-// pages/pic/pic.js
-Component({
-  /**
-   * 组件的属性列表
-   */
-  properties: {
+let col1H = 0;
+let col2H = 0;
 
-  },
+Page({
 
-  /**
-   * 组件的初始数据
-   */
   data: {
-    imgUrls: [
-      'http://img06.tooopen.com/images/20160818/tooopen_sy_175866434296.jpg',
-      'http://img06.tooopen.com/images/20160818/tooopen_sy_175833047715.jpg'
-    ],
-    indicatorDots: false,
-    autoplay: true,
-    interval: 5000,
-    duration: 1000
+    scrollH: 0,
+    imgWidth: 0,
+    loadingCount: 0,
+    images: [],
+    col1: [],
+    col2: []
   },
 
-  /**
-   * 组件的方法列表
-   */
-  methods: {
-    changeIndicatorDots: function (e) {
-      this.setData({
-        indicatorDots: !this.data.indicatorDots
-      })
-    },
-    changeAutoplay: function (e) {
-      this.setData({
-        autoplay: !this.data.autoplay
-      })
-    },
-    intervalChange: function (e) {
-      this.setData({
-        interval: e.detail.value
-      })
-    },
-    durationChange: function (e) {
-      this.setData({
-        duration: e.detail.value
-      })
+  onLoad: function () {
+    wx.getSystemInfo({
+      success: (res) => {
+        let ww = res.windowWidth;
+        let wh = res.windowHeight;
+        let imgWidth = ww * 0.48;
+        let scrollH = wh;
+
+        this.setData({
+          scrollH: scrollH,
+          imgWidth: imgWidth
+        });
+
+        this.loadImages();
+      }
+    })
+  },
+
+  onImageLoad: function (e) {
+    let imageId = e.currentTarget.id;
+    let oImgW = e.detail.width;         //图片原始宽度
+    let oImgH = e.detail.height;        //图片原始高度
+    let imgWidth = this.data.imgWidth;  //图片设置的宽度
+    let scale = imgWidth / oImgW;        //比例计算
+    let imgHeight = oImgH * scale;      //自适应高度
+
+    let images = this.data.images;
+    let imageObj = null;
+
+    for (let i = 0; i < images.length; i++) {
+      let img = images[i];
+      if (img.id === imageId) {
+        imageObj = img;
+        break;
+      }
     }
+
+    imageObj.height = imgHeight;
+
+    let loadingCount = this.data.loadingCount - 1;
+    let col1 = this.data.col1;
+    let col2 = this.data.col2;
+
+    if (col1H <= col2H) {
+      col1H += imgHeight;
+      col1.push(imageObj);
+    } else {
+      col2H += imgHeight;
+      col2.push(imageObj);
+    }
+
+    let data = {
+      loadingCount: loadingCount,
+      col1: col1,
+      col2: col2
+    };
+
+    if (!loadingCount) {
+      data.images = [];
+    }
+
+    this.setData(data);
+  },
+
+  loadImages: function () {
+    let images = [
+      { pic: "../../static/image/p1.jpg", height: 0 },
+      { pic: "../../static/image/p2.jpg", height: 0 },
+      { pic: "../../static/image/p3.jpg", height: 0 },
+      { pic: "../../static/image/p4.jpg", height: 0 },
+      { pic: "../../static/image/p5.jpg", height: 0 },
+      { pic: "../../static/image/p6.jpg", height: 0 },
+      { pic: "../../static/image/p7.jpg", height: 0 },
+      { pic: "../../static/image/p8.jpg", height: 0 },
+      { pic: "../../static/image/p9.jpg", height: 0 },
+      { pic: "../../static/image/p10.jpg", height: 0 },
+      { pic: "../../static/image/p11.jpg", height: 0 },
+    ];
+
+    let baseId = "img-" + (+new Date());
+
+    for (let i = 0; i < images.length; i++) {
+      images[i].id = baseId + "-" + i;
+    }
+
+    this.setData({
+      loadingCount: images.length,
+      images: images
+    });
   }
+
 })

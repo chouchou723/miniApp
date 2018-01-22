@@ -4,13 +4,14 @@ const app = getApp()
 
 Page({
   data: {
-    time:'2015-12-19 20:00',
+    ot:'2015/12/19 20:00',
     now:'',
     hour:'',
     minute: '',
     second: '',
     can:{},
-    motto: 'Welcome To Our World',
+    count:0,
+    motto: 'Love Story Start',
     userInfo: {},
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
@@ -23,27 +24,24 @@ Page({
       url: '../logs/logs'
     })
   },
-  next(event) {
-    // wx.chooseImage({
-    //   count: 1, // 默认9
-    //   sizeType: ['original', 'compressed'], // 可以指定是原图还是压缩图，默认二者都有
-    //   sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
-    //   success: function (res) {
-    //     // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片
-    //     var tempFilePaths = res.tempFilePaths;
-    //     wx.previewImage({
-    //       current: tempFilePaths, // 当前显示图片的http链接
-    //       urls: tempFilePaths // 需要预览的图片http链接列表
-    //     })
-    //   }
-    // })
-    console.log(event)
-    wx.navigateTo({
-      url: event.target.dataset.hi
-    })
+  next() {
+    console.log(this.count)
+    if(this.data.count===0){
+      this.setData({
+        count:1,
+        motto:'Marry Day',
+        ot:'2017/02/18 12:00'});
+      
+    }else{
+      this.setData({
+        count: 0,
+        motto: 'Love Story Start',
+        ot: '2015/12/19 12:00'
+      });
+    }
   },
   changeTime(){
-    let a = '2015/12/19 20:00';
+    let a = this.data.ot;
     let c = (new Date() - new Date(a));
     let b = Math.ceil((new Date() - new Date(a)) / 3600 / 24 / 1000)
     this.setData({
@@ -54,7 +52,7 @@ Page({
     })
   },
   onUnload:function(){
-    clearInterval(this.can)
+    clearInterval(this.data.can)
   },
   onLoad: function () {
     this.can = setInterval(this.changeTime, 1000)

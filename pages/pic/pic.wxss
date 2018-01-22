@@ -1,5 +1,7 @@
 /* pages/pic/pic.wxss */
-image{
-  width: 100%;
-  height: 200px;
+.img_item {
+  width: 48%;
+  margin: 1%;
+  display: inline-block;
+  vertical-align: top;
 }

@@ -1,9 +1,9 @@
 <!--index.wxml-->
 <view class="container1">
  <image src='../../static/image/b.jpg' mode='widthFix' class='bkimg'></image>
-   <view class="userinfo">
+   <view class="userinfo" bindtap="next">
     <text class="userinfo-nickname">{{now}}</text>
-     <text class="userinfo-nickname1">Love Story Start</text>
+     <text class="userinfo-nickname1" >{{motto}}</text>
       <text class="userinfo-nickname2">{{hour}}:{{minute}}:{{second}}</text> 
      
   </view>
