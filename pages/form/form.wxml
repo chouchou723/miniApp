@@ -1,0 +1,18 @@
+<!--pages/form/form.wxml-->
+  <form bindsubmit="formSubmit" bindreset="Reset">
+  <view >
+    <view>用户名：</view>
+    <label><input name="userName"  placeholder="请输入用户名！" /></label>
+  </view>
+  <view>
+    <view>密码：</view>
+    <label><input name="psw"  placeholder="请输入密码！" password="true" /></label>
+  </view>
+  <view style="display:flex;">
+    <button  formType="submit" >登录</button>
+    <button  formType="reset" >重置</button>
+  </view>
+</form>
+<view class="errod">{{tip}}</view>
+<view class='inform'>账号：{{userName}}</view>
+<view class='inform'>密码：{{psw}}</view>
