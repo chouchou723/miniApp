@@ -4,13 +4,14 @@
     "pages/logs/logs",
     "pages/home/home",
     "pages/form/form",
-    "pages/pic/pic"
+    "pages/pic/pic",
+    "pages/map/map"
   ],
   "window": {
     "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "ChouChou",
-    "navigationBarTextStyle": "black",
+    "navigationBarBackgroundColor": "#062735",
+    "navigationBarTitleText": "ChouLoveCandy",
+    "navigationBarTextStyle": "white",
     "enablePullDownRefresh":"true"
   }
   

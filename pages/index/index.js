@@ -4,10 +4,12 @@ const app = getApp()
 
 Page({
   data: {
-    motto: 'Welcome To My World',
+    motto: 'Welcome To Our World',
     userInfo: {},
     hasUserInfo: false,
-    canIUse: wx.canIUse('button.open-type.getUserInfo')
+    canIUse: wx.canIUse('button.open-type.getUserInfo'),
+    arrayL: [{ id: '1', itemName: '美食', path: '../../static/image/food.jpg', url: '../home/home' }, { id: '1', itemName: '地图', path: '../../static/image/food2.jpg', url: '../map/map' }, 
+      { id: '1', itemName: '记录', path: '../../static/image/food3.png', url: '../pic/pic' }, { id: '1', itemName: '关于', path: '../../static/image/food4.png', url: '../form/form'}]
   },
   //事件处理函数
   bindViewTap: function () {
@@ -15,7 +17,7 @@ Page({
       url: '../logs/logs'
     })
   },
-  next() {
+  next(event) {
     // wx.chooseImage({
     //   count: 1, // 默认9
     //   sizeType: ['original', 'compressed'], // 可以指定是原图还是压缩图，默认二者都有
@@ -29,8 +31,9 @@ Page({
     //     })
     //   }
     // })
+    console.log(event)
     wx.navigateTo({
-      url: '../pic/pic'
+      url: event.target.dataset.hi
     })
   },
   onLoad: function () {

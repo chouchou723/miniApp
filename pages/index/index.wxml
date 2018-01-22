@@ -1,16 +1,21 @@
 <!--index.wxml-->
 <view class="container">
   <view class="userinfo">
+ <image src='../../static/image/header-top.png' mode='center' class='bkimg'></image> 
     <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
     <block wx:else>
       <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
       <text class="userinfo-nickname">{{userInfo.nickName}}</text>
     </block>
   </view>
-  <view class="usermotto">
+  <!-- <view class="usermotto">
     <text class="user-motto" bindtap="next">{{motto}}</text>
-  </view>
+  </view> -->
   <view class='userStart'>
-  <button type="default"  bindtap="next" > Start </button>
+  <view wx:for="{{arrayL}}" class='listA' bindtap="next">
+  <image src='{{item.path}}' class='bkimg1'  data-hi="{{item.url}}"></image>
+  <view>{{item.itemName}}</view>
+  </view>
+  <!-- <button type="default"  bindtap="next" > Welcome To Our World </button> -->
   </view>
 </view>

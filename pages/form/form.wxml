@@ -1,18 +1,14 @@
-<!--pages/form/form.wxml-->
-  <form bindsubmit="formSubmit" bindreset="Reset">
-  <view >
-    <view>用户名：</view>
-    <label><input name="userName"  placeholder="请输入用户名！" /></label>
+<!--index.wxml-->
+<view class="container1">
+ <image src='../../static/image/b.jpg' mode='widthFix' class='bkimg'></image>
+   <view class="userinfo">
+    <text class="userinfo-nickname">{{now}}</text>
+     <text class="userinfo-nickname1">Love Story Start</text>
+      <text class="userinfo-nickname2">{{hour}}:{{minute}}:{{second}}</text> 
+     
   </view>
-  <view>
-    <view>密码：</view>
-    <label><input name="psw"  placeholder="请输入密码！" password="true" /></label>
-  </view>
-  <view style="display:flex;">
-    <button  formType="submit" >登录</button>
-    <button  formType="reset" >重置</button>
-  </view>
-</form>
-<view class="errod">{{tip}}</view>
-<view class='inform'>账号：{{userName}}</view>
-<view class='inform'>密码：{{psw}}</view>
+  <image src='../../static/image/bc.png' mode='left' class='bkimg1'></image>
+  <!-- <view class="usermotto">
+    <text class="user-motto" bindtap="next">{{motto}}</text>
+  </view> -->
+</view>
