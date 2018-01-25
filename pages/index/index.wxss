@@ -72,8 +72,27 @@
 }
 .bkimg1{
   width:256rpx;
-  height:256rpx; 
+  height:256rpx;
+ 
 }
 .bkimg1:hover{
   transform: scale(1.1)
+}
+.zoom{
+ -webkit-transform: translate3d(0, 0, 0) scale3d(40, 40, 1);
+    -moz-transform: translate3d(0, 0, 0) scale3d(40, 40, 1);
+    -ms-transform: translate3d(0, 0, 0) scale3d(40, 40, 1);
+    transform: translate3d(0, 0, 0) scale3d(40, 40, 1);
+    -webkit-transition-property: width, height, border-radius, transform;
+    -moz-transition-property: width, height, border-radius, transform;
+    -o-transition-property: width, height, border-radius, transform;
+    transition-property: width, height, border-radius, transform;
+    -webkit-transition-duration: 0.5s;
+    -moz-transition-duration: 0.5s;
+    -o-transition-duration: 0.5s;
+    transition-duration: 0.5s;
+    -webkit-transition-timing-function: ease-in-out;
+    -moz-transition-timing-function: ease-in-out;
+    -o-transition-timing-function: ease-in-out;
+    transition-timing-function: ease-in-out;
 }

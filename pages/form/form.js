@@ -25,19 +25,24 @@ Page({
     })
   },
   next() {
-    console.log(this.count)
     if(this.data.count===0){
+      clearInterval(this.data.can)
       this.setData({
         count:1,
         motto:'Marry Day',
-        ot:'2017/02/18 12:00'});
-      
+        ot:'2017/02/18 12:00',
+        can: setInterval(this.changeTime, 1000)});
+        
+      this.changeTime();
     }else{
+      clearInterval(this.data.can)
       this.setData({
         count: 0,
         motto: 'Love Story Start',
-        ot: '2015/12/19 12:00'
+        ot: '2015/12/19 12:00',
+        can: setInterval(this.changeTime, 1000)
       });
+      this.changeTime();
     }
   },
   changeTime(){
@@ -55,7 +60,9 @@ Page({
     clearInterval(this.data.can)
   },
   onLoad: function () {
-    this.can = setInterval(this.changeTime, 1000)
+    this.setData({
+      can: setInterval(this.changeTime, 1000)
+    })
     this.changeTime();
     if (app.globalData.userInfo) {
       this.setData({
@@ -82,6 +89,12 @@ Page({
           })
         }
       })
+    }
+  },
+  onShareAppMessage: function () {
+    return {
+      title: 'ChouChouLoveCandy',
+      path: '/pages/form/form'
     }
   },
   getUserInfo: function (e) {

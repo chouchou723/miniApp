@@ -4,11 +4,12 @@ const app = getApp()
 
 Page({
   data: {
+    zoomIn:0,
     motto: 'Welcome To Our World',
     userInfo: {},
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
-    arrayL: [{ id: '1', itemName: '爱の美食', path: '../../static/image/food.jpg', url: '../home/home' }, { id: '2', itemName: '爱の地图', path: '../../static/image/food2.jpg', url: '../map/map' }, 
+    arrayL: [{ id: '1', itemName: '爱の电影', path: '../../static/image/food.jpg', url: '../board/board' }, { id: '2', itemName: '爱の公交', path: '../../static/image/food2.jpg', url: '../bus/bus' }, 
       { id: '3', itemName: '爱の记录', path: '../../static/image/food3.png', url: '../pic/pic' }, { id: '4', itemName: '爱の计时', path: '../../static/image/food4.png', url: '../form/form'}]
   },
   //事件处理函数
@@ -31,7 +32,7 @@ Page({
     //     })
     //   }
     // })
-    console.log(event)
+    this.setData({ zoomIn: event.target.dataset.hi})
     wx.navigateTo({
       url: event.target.dataset.hi
     })
@@ -63,6 +64,9 @@ Page({
         }
       })
     }
+  },
+  onShow(){
+    this.setData({zoomIn:0})
   },
   getUserInfo: function (e) {
     console.log(e)

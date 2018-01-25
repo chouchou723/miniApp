@@ -2,10 +2,13 @@
   "pages": [
     "pages/index/index",
     "pages/logs/logs",
-    "pages/home/home",
     "pages/form/form",
     "pages/pic/pic",
-    "pages/map/map"
+    "pages/board/board",
+    "pages/list/list",
+    "pages/item/item",
+    "pages/bus/bus",
+    "pages/bus/busDetail"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -13,6 +16,10 @@
     "navigationBarTitleText": "ChouLoveCandy",
     "navigationBarTextStyle": "white",
     "enablePullDownRefresh":"true"
+  },
+  "networkTimeout": {
+    "request": 20000,
+    "downloadFile": 20000
   }
   
 }

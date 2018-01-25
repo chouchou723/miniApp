@@ -29,7 +29,12 @@ Page({
       }
     })
   },
-
+  onShareAppMessage: function () {
+    return {
+      title: 'ChouChouLoveCandy',
+      path: '/pages/pic/pic'
+    }
+  },
   onImageLoad: function (e) {
     let imageId = e.currentTarget.id;
     let oImgW = e.detail.width;         //图片原始宽度

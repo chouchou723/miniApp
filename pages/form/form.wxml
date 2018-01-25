@@ -5,7 +5,6 @@
     <text class="userinfo-nickname">{{now}}</text>
      <text class="userinfo-nickname1" >{{motto}}</text>
       <text class="userinfo-nickname2">{{hour}}:{{minute}}:{{second}}</text> 
-     
   </view>
   <image src='../../static/image/bc.png' mode='left' class='bkimg1'></image>
   <!-- <view class="usermotto">

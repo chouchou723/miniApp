@@ -1,0 +1,51 @@
+<view class="container-bus">
+  <view class="weui-search-bar">
+      <view class="weui-search-bar__form">
+          <view class="weui-search-bar__box">
+              <icon class="weui-icon-search_in-box" type="search" size="14"></icon>
+              <input
+                type="text"
+                class="weui-search-bar__input"
+                confirm-type='search'
+                placeholder="请输入线路名称"
+                value="{{inputVal}}"
+                focus="{{inputShowed}}"
+                bindinput="inputTyping"
+                bindconfirm="bindOnSearch"
+              />
+              <view class="weui-icon-clear" wx:if="{{inputVal.length > 0}}" bindtap="clearInput">
+                  <icon type="clear" size="14" />
+              </view>
+          </view>
+          <label class="weui-search-bar__label" hidden="{{inputShowed}}" bindtap="showInput">
+              <icon class="weui-icon-search" type="search" size="14" />
+              <view class="weui-search-bar__text">请输入线路名称</view>
+          </label>
+      </view>
+  </view>
+  <scroll-view  class="weui-cells searchbar-result scroll-view_H" scroll-y="true" style="width: 100%" wx:if="{{matchedBus.length}}">
+    <view wx:for="{{matchedBus}}" wx:key="{{index}}"
+      id="{{item}}" bindtap="selectBusName"
+      wx:for-item="item" class="weui-cell__bd weui-cell"
+      hover-class="weui-cell_active">
+        {{item}}
+    </view>
+  </scroll-view>
+  <view class="line-name">
+    <button class="bus-search" type="primary" plain bindtap="bindOnSearch" loading="{{loading}}">查询</button>
+  </view>
+
+  <view class="history-items" hidden="{{!history.length}}" >
+    <view wx:for="{{history}}" wx:key="{{index}}"
+      data-name="{{item}}" wx:for-item="item"
+      class="history-item" bindtap="bindOnClickHistory">
+      <image class="icon-bus" src="../../static/image/bus.png" mode="aspectFill" />
+      <view class="history-name" data-name="{{item}}">{{item}}</view>
+      <image class="icon-trash" src="../../static/image/trash.png" data-name="{{item}}" catchtap="bindOnClearHistoryItem" mode="aspectFill" />
+    </view>
+    <view class="history-item clear-history" bindtap="bindOnClearAll">清空历史纪录</view>
+  </view>
+  <view class="feedback-tips">
+    使用中有任何问题,请在意见反馈提出您的宝贵意见
+  </view>
+</view>

@@ -1,0 +1,49 @@
+<view wx:if="{{!noShow}}" class="bus-detail">
+  <view class="header-wrapper" bindtap="onClickSwitch">
+    <view class="station-wraper">
+      <view class="bus-name">{{name}}</view>
+      <view class="bus-start-end">
+        <view class="station">{{stations.start}}</view>
+        <image class="icon-switch" src="../../static/image/switch.png" mode="aspectFill" />
+        <view class="station">{{stations.end}}</view>
+      </view>
+    </view>
+    <view class="time-wraper">
+      <view class="time">{{'首班: ' + stations.earlytime }}</view>
+      <view class="time late-time">{{'末班: ' + stations.latetime }}</view>
+    </view>
+    <image class="icon-arrow" src="../../static/image/arrow_w.png" />
+  </view>
+  <scroll-view class="scroll-view_H" scroll-y="true" style="width: 100%">
+    <view
+      wx:for="{{stations.stops}}"
+      wx:key="{{ index }}"
+      wx:for-item="item"
+      class="stops-wrapper"
+    >
+    <!-- <image
+      class="icon-point"
+      src="../../static/image/icon_point{{ stopId === item.id ? '_active' : '' }}.png"
+    /> -->
+    <view  class="stops-items {{ stopId === item.id  ? 'ys' : '' }}" >
+      <view class="stop-item" id="{{item.id}}" bindtap="bindClickStop">
+        <!-- <image class="icon-traffic" src="../../static/image/traffic.png" /> -->
+        <view
+          class="station-name {{ stopId === item.id ? 'station-name-active' : '' }}"
+          id="{{item.id}}"
+        >
+          {{index+1}}.  {{item.zdmc}}
+        </view>
+        <image class="icon-arrow-up-down" src="../../static/image/arrow_{{ stopId === item.id ? 'up' : 'down' }}.png" />
+      </view>
+      <view
+        class="{{ stopId === item.id ? 'bellows-wrapper' : 'hidden' }}"
+        id="{{item.id}}"
+        bindtap="bindClickStop"
+      >
+        {{tips.length ? tips : '尚未发车,请耐心等待~'}}
+      </view>
+    </view>
+    </view>
+  </scroll-view>
+</view>

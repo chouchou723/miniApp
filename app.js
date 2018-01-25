@@ -1,7 +1,11 @@
 //app.js
-// import wxValidate from 'utils/wxValidate'
+const douban = require('./utils/douban.js')
+import * as CONSTANT from './utils/constant';
+import * as Rest from './utils/restUtil';
 App({
-  // wxValidate: (rules, messages) => new wxValidate(rules, messages),
+  data:{
+    douban: douban,
+  },
   onLaunch: function () {
     // 展示本地存储能力
     var logs = wx.getStorageSync('logs') || []
@@ -34,6 +38,44 @@ App({
         }
       }
     })
+  },
+  showModal(title = CONSTANT.MODAL_TIPS, content = CONSTANT.SERVER_ERROR, cb) {
+    wx.showModal({
+      title,
+      content,
+      showCancel: false,
+      success: function (res) {
+        if (res.confirm) {
+          cb();
+        }
+      }
+    });
+  },
+  getUserInfo: function (cb) {
+    const vm = this;
+    if (this.globalData.userInfo) {
+      typeof cb == "function" && cb(this.globalData.userInfo)
+    } else {
+      wx.login({
+        success: function () {
+          wx.getUserInfo({
+            success: function (res) {
+              vm.globalData.userInfo = res.userInfo
+              typeof cb == "function" && cb(vm.globalData.userInfo)
+            }
+          })
+        }
+      })
+    }
+  },
+  showLoading(title = '查询中', icon = 'loading') {
+    wx.showToast({
+      title,
+      icon
+    });
+  },
+  hideLoading() {
+    wx.hideToast();
   },
   globalData: {
     userInfo: null
