@@ -13,11 +13,15 @@
   width:100%
 }
 .slide swiper {
-  height: 480rpx;
+  height: 360rpx;
+  padding-top:50rpx;
+}
+.slide swiper-item{
+ background-color:#f6f6f6;
 }
 .slide swiper  image {
-    height: 100%;
-    width: 100%;
+     width: 100%;
+     height: 100%;
   }
 .board {
   box-sizing: border-box;
@@ -28,7 +32,7 @@
   display: flex;
   flex-direction: column;
   cursor: pointer;
-  font-size: 20rpx;
+  font-size: 23rpx;
   margin: 40rpx 0;
   padding: 20rpx;
   background-color: #fff;
@@ -38,32 +42,36 @@
    display: flex;
     margin-bottom: 10rpx;
     width: 100%;
+    color:#37a;
 }
 .board-item .title text{
    flex: 1;
 }
 .board-item .title image{
    height: 20rpx;
-      width: 20rpx;
+   width: 20rpx;
 }
 .board-item .content{
   height: 300rpx;
 }
 .board-item .content .inner{
   display: flex;
-      flex-direction: row;
-      height: 300rpx;
-      width: 900rpx;
+  flex-direction: row;
+  height: 300rpx;
+  width: 900rpx;
 }
 .board-item .content .inner .movie-item{
-   display: flex;
-        flex-direction: column;
-        width: 180rpx;
-        margin: 10rpx;
+  display: flex;
+  flex-direction: column;
+  width: 180rpx;
+  margin: 10rpx;
+  color:#2b3a40;
 }
 .board-item .content .inner .movie-item image {
           width: 180rpx;
           height: 250rpx;
+          border:1px solid grey;
+
         }
   .board-item .content .inner .movie-item text {
           text-align: center;

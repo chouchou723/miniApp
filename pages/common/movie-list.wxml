@@ -37,7 +37,7 @@
 <!-- 电影列表组件 供每一个列表展示的页面使用 -->
 <template name="movie-list">
   <view class="list">
-    <template is="{{ item.subject ? 'item2' : 'item1' }}" data="{{ item }}" wx:for="{{ movies }}" wx:key="id"/>
+    <template is="{{ item.subject ? 'item2' : 'item1' }}" wx:for="{{ movies }}" wx:key="id" data="{{ item }}" />
     <view class="tips">
       <view wx:if="{{ hasMore }}">
         <image src="../../static/image/loading.gif" mode="aspectFill"/>

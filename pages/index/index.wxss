@@ -21,13 +21,6 @@
    position: absolute;
   top:250px;
 }
-
-.usermotto {
-  margin-top: 120rpx;
-/* background: linear-gradient(#f00,#00f); */
-/* background-blend-mode:lighten; */
-/* background-image: -webkit-gradient(linear, 0 0, 0 bottom, from(rgba(234, 101, 10, 1)), to(rgba(246, 199, 156, 1))); */
-}
 .userStart{
   color: #aaa;
   width: 100%;
@@ -52,15 +45,6 @@
 .listA:last-child{
   color: #76b828
 }
-/** wxss **/
-/** 修改button默认的点击态样式类**/
-.button-hover {
-  background-color: #aaa;
-}
-/** 添加自定义button点击态样式类**/
-.other-button-hover {
-  background-color: blue;
-}
 .bkimg{
   position: absolute;
   top: 0;
@@ -79,10 +63,10 @@
   transform: scale(1.1)
 }
 .zoom{
- -webkit-transform: translate3d(0, 0, 0) scale3d(40, 40, 1);
-    -moz-transform: translate3d(0, 0, 0) scale3d(40, 40, 1);
-    -ms-transform: translate3d(0, 0, 0) scale3d(40, 40, 1);
-    transform: translate3d(0, 0, 0) scale3d(40, 40, 1);
+ -webkit-transform: translate3d(0, 0, 0) scale3d(20, 20, 1);
+    -moz-transform: translate3d(0, 0, 0) scale3d(20, 20, 1);
+    -ms-transform: translate3d(0, 0, 0) scale3d(20,20, 1);
+    transform: translate3d(0, 0, 0) scale3d(20, 20, 1);
     -webkit-transition-property: width, height, border-radius, transform;
     -moz-transition-property: width, height, border-radius, transform;
     -o-transition-property: width, height, border-radius, transform;

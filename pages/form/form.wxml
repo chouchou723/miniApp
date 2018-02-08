@@ -1,13 +1,10 @@
 <!--index.wxml-->
 <view class="container1">
- <image src='../../static/image/b.jpg' mode='widthFix' class='bkimg'></image>
+  <image src='../../static/image/b.jpg'  class='bkimg'></image> 
    <view class="userinfo" bindtap="next">
     <text class="userinfo-nickname">{{now}}</text>
      <text class="userinfo-nickname1" >{{motto}}</text>
       <text class="userinfo-nickname2">{{hour}}:{{minute}}:{{second}}</text> 
   </view>
   <image src='../../static/image/bc.png' mode='left' class='bkimg1'></image>
-  <!-- <view class="usermotto">
-    <text class="user-motto" bindtap="next">{{motto}}</text>
-  </view> -->
 </view>

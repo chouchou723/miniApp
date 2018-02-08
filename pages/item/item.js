@@ -19,7 +19,7 @@ Page({
     app.data.douban.findOne(params.id)
       .then(d => {
         this.setData({ title: d.title, movie: d, loading: false })
-        wx.setNavigationBarTitle({ title: d.title + ' « 电影 « 豆瓣' })
+        wx.setNavigationBarTitle({ title: d.title})
       })
       .catch(e => {
         this.setData({ title: '获取数据异常', movie: {}, loading: false })
@@ -31,42 +31,14 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady() {
-    wx.setNavigationBarTitle({ title: this.data.title + ' « 电影 « 豆瓣' })
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow() {
-    // TODO: onShow
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide() {
-    // TODO: onHide
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload() {
-    // TODO: onUnload
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh() {
-    // TODO: onPullDownRefresh
+    wx.setNavigationBarTitle({ title: this.data.title })
   },
 
   onShareAppMessage() {
     return {
-      title: '自定义分享标题',
-      desc: '自定义分享描述',
-      path: '/pages/item?id=' + this.data.id
+      title: this.data.title,
+      desc: '喜欢就多多分享吧~',
+      path: '/pages/item/item?id=' + this.data.id
     }
   }
 })

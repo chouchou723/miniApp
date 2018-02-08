@@ -1,16 +1,13 @@
 //index.js
-//获取应用实例
-const app = getApp()
-
+const app = getApp();
 Page({
   data: {
     zoomIn:0,
-    motto: 'Welcome To Our World',
     userInfo: {},
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
-    arrayL: [{ id: '1', itemName: '爱の电影', path: '../../static/image/food.jpg', url: '../board/board' }, { id: '2', itemName: '爱の公交', path: '../../static/image/food2.jpg', url: '../bus/bus' }, 
-      { id: '3', itemName: '爱の记录', path: '../../static/image/food3.png', url: '../pic/pic' }, { id: '4', itemName: '爱の计时', path: '../../static/image/food4.png', url: '../form/form'}]
+    arrayL: [{ id: '1', itemName: '爱の电影', path: '../../static/image/food.png', url: '../board/board' }, { id: '2', itemName: '爱の公交', path: '../../static/image/food2.png', url: '../bus/bus' }, 
+      { id: '3', itemName: '爱の画廊', path: '../../static/image/food3.png', url: '../pic/pic' }, { id: '4', itemName: '爱の计时', path: '../../static/image/food4.png', url: '../form/form'}]
   },
   //事件处理函数
   bindViewTap: function () {
@@ -19,23 +16,20 @@ Page({
     })
   },
   next(event) {
-    // wx.chooseImage({
-    //   count: 1, // 默认9
-    //   sizeType: ['original', 'compressed'], // 可以指定是原图还是压缩图，默认二者都有
-    //   sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
-    //   success: function (res) {
-    //     // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片
-    //     var tempFilePaths = res.tempFilePaths;
-    //     wx.previewImage({
-    //       current: tempFilePaths, // 当前显示图片的http链接
-    //       urls: tempFilePaths // 需要预览的图片http链接列表
-    //     })
-    //   }
-    // })
-    this.setData({ zoomIn: event.target.dataset.hi})
+    this.setData({ zoomIn: event.target.dataset.hi});
     wx.navigateTo({
       url: event.target.dataset.hi
     })
+    setTimeout(()=>{
+
+    this.setData({ zoomIn: 0 })
+    },1000)
+  },
+  onShareAppMessage: function () {
+    return {
+      title: 'ChouChouLoveCandy',
+      path: '/pages/index/index'
+    }
   },
   onLoad: function () {
     if (app.globalData.userInfo) {
@@ -65,14 +59,13 @@ Page({
       })
     }
   },
-  onShow(){
-    this.setData({zoomIn:0})
-  },
-  getUserInfo: function (e) {
-    console.log(e)
+  // onHide() {
+  //   this.setData({ zoomIn: 0 })
+  // }, 
+  getUserInfo: function (e) {//手动获取
     app.globalData.userInfo = e.detail.userInfo
     this.setData({
-      userInfo: e.detail.userInfo,
+      userInfo: e.detail.userInfo ,
       hasUserInfo: true
     })
   }

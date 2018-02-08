@@ -1,7 +1,5 @@
 const App = getApp();
-
 import * as Rest from '../../utils/restUtil';
-
 Page({
   data: {
     inputShowed: false,
@@ -16,7 +14,7 @@ Page({
     let allLines = wx.getStorageSync('allLines');
     App.getUserInfo((userInfo) => {
       vm.setData({ userInfo });
-      Rest.post('/api/user/add', userInfo, () => { });
+      // Rest.post('/api/user/add', userInfo, () => { });
       if (!allLines.length) {
         Rest.get('/bus/names/all', (res) => {
           const { data } = res;
@@ -82,7 +80,7 @@ Page({
 
   checkBusName: function (data, key) {
     if (!key.length || !data) return [];
-    return data.filter(item => !item.indexOf(key) && item != key);
+    return data.filter(item =>item.includes(key));
   },
 
   bindOnClickHistory: function (e) {

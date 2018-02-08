@@ -18,10 +18,8 @@ Page({
   },
 
   loadMore() {
-    if (!this.data.hasMore) return
-
+    if (!this.data.hasMore) return//刷新后发现没数据,就不会再触发刷新了
     this.setData({ subtitle: '加载中...', loading: true })
-
     return app.data.douban.find(this.data.type, this.data.page++, this.data.size)
       .then(d => {
         if (d.subjects.length) {
@@ -37,22 +35,19 @@ Page({
   },
 
   /**
-   * 生命周期函数--监听页面加载
+   * 生命周期函数--监听页面加载,params=url参数
    */
   onLoad(params) {
     this.data.title = params.title || this.data.title
-
     // 类型： in_theaters  coming_soon  us_box
     this.data.type = params.type || this.data.type
-
     this.loadMore();
-    
   },
   /**
-   * 生命周期函数--监听页面初次渲染完成
+   * 生命周期函数--监听页面初次渲染完成load之后
    */
   onReady() {
-    wx.setNavigationBarTitle({ title: this.data.title + ' « 电影 « 豆瓣' })
+    wx.setNavigationBarTitle({title: this.data.title })
   },
 
   /**
@@ -61,7 +56,7 @@ Page({
   onPullDownRefresh() {
     this.setData({ movies: [], page: 1, hasMore: true })
     this.loadMore()
-      .then(() => app.wechat.original.stopPullDownRefresh())
+      .then(() => wx.stopPullDownRefresh())
   },
 
   onReachBottom() {

@@ -1,4 +1,9 @@
 /**index.wxss**/
+.container1{
+  height: 100%;
+  width: 100%;
+  background-color:#4e5587;
+}
 .userinfo {
   display: flex;
   flex-direction: column;
@@ -7,15 +12,6 @@
   position: absolute;
   top: 0;
   height:300px;
-}
-
-.userinfo-avatar {
-  width: 236rpx;
-  height: 236rpx;
-  border-radius: 50%;
-  z-index: 1000;
-  position: absolute;
-  top:108px;
 }
 
 .userinfo-nickname {
@@ -38,56 +34,16 @@
   top:210px;
   font-size: 70rpx;
 }
-.usermotto {
-  margin-top: 120rpx;
-/* background: linear-gradient(#f00,#00f); */
-/* background-blend-mode:lighten; */
-/* background-image: -webkit-gradient(linear, 0 0, 0 bottom, from(rgba(234, 101, 10, 1)), to(rgba(246, 199, 156, 1))); */
-}
-.userStart{
-  color: #aaa;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
-}
-.listA{
-  width: 49%;
-  text-align: center
-}
-/** wxss **/
-/** 修改button默认的点击态样式类**/
-.button-hover {
-  background-color: #aaa;
-}
-/** 添加自定义button点击态样式类**/
-.other-button-hover {
-  background-color: blue;
-}
 .bkimg{
-  /* height:1200px; */
-  width: 100%
+  width: 750rpx;
+  height: 100%;
+  position:absolute;
+
 }
 .bkimg1{
-   width:100%;
+   width:750rpx;
    position: absolute;
-   top: 390px;
+   top: 300px;
    left:0;
 }
-.container1{
-  height: 100%;
-  width: 100%;
-  background-color:#4e5587;
-}
-.secondT{
-  position: absolute;
-  top:400px;
-}
-.secontT1{
-  color:hotpink;
-  position: absolute;
-  top:10px;
-  left:80px;
-  font-size:50px;
-}
+

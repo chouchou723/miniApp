@@ -11,15 +11,14 @@
     "pages/bus/busDetail"
   ],
   "window": {
-    "backgroundTextStyle": "light",
+    "backgroundTextStyle": "dark",
     "navigationBarBackgroundColor": "#062735",
     "navigationBarTitleText": "ChouLoveCandy",
     "navigationBarTextStyle": "white",
-    "enablePullDownRefresh":"true"
+    "enablePullDownRefresh": "true"
   },
   "networkTimeout": {
     "request": 20000,
     "downloadFile": 20000
   }
-  
 }

@@ -21,13 +21,8 @@
       wx:for-item="item"
       class="stops-wrapper"
     >
-    <!-- <image
-      class="icon-point"
-      src="../../static/image/icon_point{{ stopId === item.id ? '_active' : '' }}.png"
-    /> -->
     <view  class="stops-items {{ stopId === item.id  ? 'ys' : '' }}" >
       <view class="stop-item" id="{{item.id}}" bindtap="bindClickStop">
-        <!-- <image class="icon-traffic" src="../../static/image/traffic.png" /> -->
         <view
           class="station-name {{ stopId === item.id ? 'station-name-active' : '' }}"
           id="{{item.id}}"
