@@ -5,9 +5,8 @@
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  padding: 200rpx 0 100rpx;
+  padding: 200rpx 0 20rpx;
   box-sizing: border-box;
   overflow: hidden;
   width: 100%;
- 
 } 

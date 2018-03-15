@@ -1,4 +1,6 @@
-const URI = 'https://douban.uieee.com/v2/movie'
+const URI = 'https://liudongtushuguan.cn/v2/movie'
+// const URI ='https://douban.uieee.com/v2/movie'
+// const URI = 'http://t.yushu.im/v2/movie'
 const fetch = require('./fetch')
 /**
  * 抓取豆瓣电影特定类型的API

@@ -7,4 +7,14 @@
       <text class="userinfo-nickname2">{{hour}}:{{minute}}:{{second}}</text> 
   </view>
   <image src='../../static/image/bc.png' mode='left' class='bkimg1'></image>
+  <view style='position:absolute;bottom:0;width:100%;height:400rpx;background:black;opacity:0.2;border-radius:30px;'>
+  </view>
+  <view style='position:absolute;bottom:160rpx;width:100%;color:gainsboro;text-indent:21px;'>
+ <text>You are my North, my South, my East and my West, My working week and my Sunday rest, My noon, my midnight, my talk, my song;</text></view>
+  <!-- <view style='position:absolute;bottom:170rpx;width:100%;color:#ef6ea8'>
+  </view> -->
+  <view style='position:absolute;bottom:90rpx;width:100%;color:gainsboro;text-indent:21px;'>
+  I think that love will last forever. </view>
+  <view style='position:absolute;bottom:10rpx;width:96%;color:gainsboro;text-indent:21px;text-align:right'>
+  ——ChouChou </view>
 </view>

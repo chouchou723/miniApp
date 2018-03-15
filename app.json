@@ -14,8 +14,7 @@
     "backgroundTextStyle": "dark",
     "navigationBarBackgroundColor": "#062735",
     "navigationBarTitleText": "ChouLoveCandy",
-    "navigationBarTextStyle": "white",
-    "enablePullDownRefresh": "true"
+    "navigationBarTextStyle": "white"
   },
   "networkTimeout": {
     "request": 20000,

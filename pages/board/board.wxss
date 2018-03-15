@@ -13,8 +13,8 @@
   width:100%
 }
 .slide swiper {
-  height: 360rpx;
-  padding-top:50rpx;
+  height: 535rpx;
+  /* padding-top:20rpx; */
 }
 .slide swiper-item{
  background-color:#f6f6f6;
@@ -32,7 +32,7 @@
   display: flex;
   flex-direction: column;
   cursor: pointer;
-  font-size: 23rpx;
+  font-size: 30rpx;
   margin: 40rpx 0;
   padding: 20rpx;
   background-color: #fff;
@@ -48,29 +48,30 @@
    flex: 1;
 }
 .board-item .title image{
-   height: 20rpx;
-   width: 20rpx;
+   height: 30rpx;
+   width: 30rpx;
 }
 .board-item .content{
-  height: 300rpx;
+  height: 550rpx;
 }
 .board-item .content .inner{
   display: flex;
   flex-direction: row;
-  height: 300rpx;
-  width: 900rpx;
+  /* height: 340rpx; */
+  /* width: 900rpx; */
 }
 .board-item .content .inner .movie-item{
   display: flex;
   flex-direction: column;
-  width: 180rpx;
-  margin: 10rpx;
+  width:335rpx;
+  /* margin: 10rpx; */
   color:#2b3a40;
 }
 .board-item .content .inner .movie-item image {
-          width: 180rpx;
-          height: 250rpx;
-          border:1px solid grey;
+          width: 320rpx;
+          height: 470rpx;
+          /* border:1px solid grey; */
+          border-radius: 5px;
 
         }
   .board-item .content .inner .movie-item text {
@@ -78,4 +79,138 @@
           overflow: hidden;
           white-space: nowrap;
           text-overflow: ellipsis;
+          color:#8e8888;
+
         }
+        .board-item .content   .nob {
+         text-align:center;
+display:flex;
+justify-content:center;
+        }
+          .board-item .content .inner .movie-item  .ranktext{
+          margin-left:10px;
+          /* color:#ffb813; */
+          animation: 4s linear 0s myshake infinite;
+        }
+        #fco{
+          color:#ffb813;
+        }
+        #fcg{
+          color:#eee;
+        }
+.board-item .content .inner .movie-item  .ys {
+          width: 30rpx;
+          height: 30rpx;
+border:none;
+animation: 8s linear 0s myrotate infinite;
+        }
+.board-item:nth-child(2) .content .inner .movie-item  .ys:first-child{
+  animation: 1.8s ease-in-out 0s myjump infinite;
+}
+.board-item:nth-child(2) .content .inner .movie-item  .ys:nth-child(2){
+  animation: 1.8s ease-in-out 0.2s myjump infinite;
+}
+.board-item:nth-child(2) .content .inner .movie-item  .ys:nth-child(3){
+  animation: 1.8s ease-in-out 0.4s myjump infinite;
+}
+.board-item:nth-child(2) .content .inner .movie-item  .ys:nth-child(4){
+  animation: 1.8s ease-in-out 0.6s myjump infinite;
+}
+.board-item:nth-child(2) .content .inner .movie-item  .ys:last-child{
+  animation: 1.8s ease-in-out 0.8s myjump infinite;
+}
+.board-item:nth-child(2) .content .inner .movie-item .ranktext{
+          margin-left:10px;
+          animation: 2s ease-in-out 1s myjump1 infinite;
+        }
+      
+        .board-item:last-child{
+          margin-bottom: 0;
+        }
+        @keyframes myrotate{
+         form {transform:rotate(0deg);}    
+    to    {transform:rotate(360deg);}
+        }
+          @keyframes myjump{
+         0% {transform:translateY(0);}   
+          25% {transform:translateY(-3px);} 
+           50% {transform:translateY(0);} 
+            75% {transform:translateY(3px);}  
+    100% {transform:translateY(0);}
+        }
+          @keyframes myjump1{
+         0% {transform:translateY(0);}   
+          25% {transform:translateY(-3px);} 
+           50% {transform:translateY(0);} 
+            75% {transform:translateY(-3px);}  
+    100% {transform:translateY(0);}
+        }
+        @keyframes myshake{
+         0% {transform:rotate(0deg);}    
+   25%{transform:rotate(22.5deg);}
+    50%{transform:rotate(0deg);} 
+    75%{transform:rotate(-22.5deg);} 
+   /* 80%{transform:rotate(0deg);} */
+    100%{transform:rotate(0deg);} 
+        }
+        .ani{
+          width:150rpx;
+           height: 40rpx;
+            white-space: nowrap;
+  overflow: hidden;
+ 
+        }
+        .board-item:last-child .ani{
+  animation: typing 2.5s steps(5, end), blink-caret 0.5s step-end infinite alternate;  
+        }
+        .board-item:last-child .content .inner .movie-item  .ys:first-child{
+  animation:  1.6s ease-in-out 0s myscale infinite;transform:scale(0.8);
+}
+.board-item:last-child .content .inner .movie-item  .ys:nth-child(2){
+  animation:  1.6s ease-in-out 0.3s myscale infinite;transform:scale(0.8);
+}
+.board-item:last-child .content .inner .movie-item  .ys:nth-child(3){
+  animation:  1.6s ease-in-out 0.6s myscale infinite;transform:scale(0.8);
+}
+.board-item:last-child .content .inner .movie-item  .ys:nth-child(4){
+  animation:  1.6s ease-in-out 0.9s myscale infinite;transform:scale(0.8);
+}
+.board-item:last-child .content .inner .movie-item  .ys:last-child{
+  animation: 1.6s ease-in-out 1.2s myscale infinite;transform:scale(0.8);
+}
+.board-item:last-child .content .inner .movie-item .ranktext{
+          margin-left:10px;
+          /* color:#ffb813; */
+            animation: 1.5s ease-in-out 1s myfont infinite;  
+        }
+@keyframes myscale{
+         0% {
+           transform:scale(0.8);
+         /* transform:rotate(0deg); */
+         }    
+    50%    {
+      transform:scale(1.1);
+    box-shadow: 0 0 10px #fff681;
+    /* transform:rotate(360deg); */
+    }
+     100% {
+           transform:scale(0.8);
+         /* transform:rotate(0deg); */
+         } 
+        }
+        @keyframes myfont{
+         form {font-size:14px;
+}    
+    to    {
+    }
+        }
+          @keyframes typing{
+         0%{
+           width:0
+         }
+         }
+        @keyframes blink-caret {
+  50% {
+    border-color: transparent;
+  }
+} 

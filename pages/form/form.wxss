@@ -10,7 +10,7 @@
   align-items: center;
   width: 100%;
   position: absolute;
-  top: 0;
+  top: 80rpx;
   height:300px;
 }
 
@@ -31,7 +31,7 @@
 .userinfo-nickname2 {
   color: gainsboro;
    position: absolute;
-  top:210px;
+  top:360rpx;
   font-size: 70rpx;
 }
 .bkimg{
@@ -44,6 +44,7 @@
    width:750rpx;
    position: absolute;
    top: 300px;
-   left:0;
+   left:15rpx;
+   z-index:1
 }
 

@@ -1,4 +1,5 @@
 <view class="container-bus">
+<web-view src="http://shanghaicity.openservice.kankanews.com/public/bus"></web-view>
   <view class="weui-search-bar">
       <view class="weui-search-bar__form">
           <view class="weui-search-bar__box">
@@ -43,9 +44,14 @@
       <view class="history-name" data-name="{{item}}">{{item}}</view>
       <image class="icon-trash" src="../../static/image/trash.png" data-name="{{item}}" catchtap="bindOnClearHistoryItem" mode="aspectFill" />
     </view>
-    <view class="history-item clear-history" bindtap="bindOnClearAll">清空历史纪录</view>
+    <view class="history-item clear-history" bindtap="bindOnClearAll">清空历史记录</view>
   </view>
-  <view class="feedback-tips">
-    使用中有任何问题,请在意见反馈提出您的宝贵意见
+  <view class="metro"><button class="metro-search" type="primary" bindtap="openS" >查看地铁图</button></view>
+  <scroll-view scroll-y scroll-x style="height:{{wh}}px;width:{{ww}}px;position:fixed;top:0;z-index:3;background:white;"
+  bindtouchmove="scroll" bindtouchstart='scroll' bindtouchend='endTou' wx:if='{{canshow}}'>
+   <icon type="clear" size="20" style='position:fixed;top:0;left:0' bindtap='closeS'/>
+    <image  src='../../static/image/metro.gif' style='height:{{height}}px;width:{{width}}px;'></image>
+  </scroll-view>
+  <view>
   </view>
 </view>

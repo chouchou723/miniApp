@@ -1,4 +1,4 @@
-<view class="container">
+<view class="containerC">
   <loading hidden="{{ !loading }}">加载中...</loading>
   <image wx:if="{{ movie.images.large }}" class="background" src="{{ movie.images.large }}" mode="aspectFill"/>
   <block wx:if="{{ movie.title }}">
@@ -13,5 +13,14 @@
       <text class="label">摘要：</text>
       <text class="content">{{ movie.summary }}</text>
     </view>
+    <text class="titleC">主要演员</text>
+    <scroll-view class="contentC" scroll-x="true">
+          <view class="inner">
+              <view class="movie-item" wx:for="{{ movie.casts }}" wx:key="id">
+                <image src="{{ item.avatars.large }}" mode="aspectFill"/>
+                <text>{{ item.name }}</text>
+              </view>
+          </view>
+        </scroll-view>
   </block>
 </view>

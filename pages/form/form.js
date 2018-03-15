@@ -35,12 +35,13 @@ Page({
   changeTime(){
     let a = this.data.ot;
     let c = (new Date() - new Date(a));
-    let b = Math.ceil((new Date() - new Date(a)) / 3600 / 24 / 1000)
+    let b = Math.floor((new Date() - new Date(a)) / 3600 / 24 / 1000);
+    // console.log(Math.floor((c % 3600000) / 60000).length)
     this.setData({
       now: b,
-      hour: Math.floor(c / 3600000),
-      minute: Math.floor((c % 3600000) / 60000),
-      second: Math.floor(((c % 3600000) % 60000) / 1000)
+      hour: Math.floor(c / 3600000 % 24) <10  ? '0' + Math.floor(c / 3600000 % 24) : Math.floor(c / 3600000 % 24),
+      minute: Math.floor((c % 3600000) / 60000)< 10 ? '0' + Math.floor((c % 3600000) / 60000) : Math.floor((c % 3600000) / 60000) ,
+      second: Math.floor(((c % 3600000) % 60000) / 1000) < 10 ? '0' + Math.floor(((c % 3600000) % 60000) / 1000) : Math.floor(((c % 3600000) % 60000) / 1000)
     })
   },
   onUnload:function(){
@@ -57,5 +58,18 @@ Page({
       title: 'ChouChouLoveCandy',
       path: '/pages/form/form'
     }
+  },
+  primary(){
+    wx.requestPayment({
+      'timeStamp': '',
+      'nonceStr': '',
+      'package': '',
+      'signType': 'MD5',
+      'paySign': '',
+      'success': function (res) {
+      },
+      'fail': function (res) {
+      }
+    })
   }
 })

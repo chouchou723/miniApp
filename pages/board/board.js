@@ -13,6 +13,12 @@ Page({
     ],
     loading: true,
     dis:true,
+    r5:[1,2,3,4,5],
+    r4:[1,2,3,4],
+    r3:[1,2,3],
+    r2:[1,2],
+    r1:[1],
+    r0:[]
   },
   onLoad() {
     app.showLoading('加载中');
