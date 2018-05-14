@@ -65,25 +65,50 @@ Page({
 
   bindClickStop: function (e) {
     const vm = this;
+    console.log(e)
     const { name, direction, busInfo } = vm.data;
     const lineId = busInfo.line_id;
     const stopId = e.target.id;
-this.setData({stopId,tips:"暂未查到信息"})
+    const ss = e.target.dataset.idd-0;
+    let stopIdd = ss < 10 ? ss + '.' :ss;
+    const sid = wx.getStorageSync('sid');
+// this.setData({stopId,tips:"暂未查到信息"})
+    // console.log(e)
+    if (stopId!=''){
+
     App.showLoading();
-    Rest.get(
-      '/api/busstop/' + encodeURIComponent(name) + '/' + lineId + '/' + stopId + '/' + direction,
-      (res) => {
+    wx.request({
+      url: `https://www.choulovecandy.cn/bus/${sid}/${direction}/${stopIdd}`,
+      success:res=>{
+        // console.log(res)
         let tips = '';
-        const { data } = res;
-        if (data.cars.length) {
-          const { terminal, stopdis, time } = data.cars[0];
-          if (time !== 'null') {
-            tips = '车牌:' + terminal + ', 剩余' + stopdis + '站, 约' + Math.ceil(time / 60) + '分钟';
-          }
+        let data = res.data
         App.hideLoading();
+        if (data.error == '-2' || data.error == '0'){
+          tips = '暂未发车';
+        }else{
+          tips = '车牌:' + data[0].terminal + ', 剩余' + data[0].stopdis + '站, 约' + Math.ceil(data[0].time / 60) + '分钟';
         }
         vm.setData({ stopId, tips });
       }
-    );
+    })
+    }else{
+      vm.setData({ stopId });
+    }
+    // Rest.get(
+    //   '/api/busstop/' + encodeURIComponent(name) + '/' + lineId + '/' + stopId + '/' + direction,
+    //   (res) => {
+    //     let tips = '';
+    //     const { data } = res;
+    //     if (data.cars.length) {
+    //       const { terminal, stopdis, time } = data.cars[0];
+    //       if (time !== 'null') {
+    //         tips = '车牌:' + terminal + ', 剩余' + stopdis + '站, 约' + Math.ceil(time / 60) + '分钟';
+    //       }
+    //     App.hideLoading();
+    //     }
+    //     vm.setData({ stopId, tips });
+    //   }
+    // );
   }
 })

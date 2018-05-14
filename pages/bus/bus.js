@@ -55,7 +55,7 @@ onReady(){
   })
   var context = wx.createCanvasContext('firstCanvas')
   context.drawImage(this.data.met, 0, 0,this.data.ww,this.data.wh);
-  context.draw()
+  context.draw();
 },
   onShareAppMessage: function () {
     return {
@@ -115,6 +115,14 @@ onReady(){
 
   bindOnClickHistory: function (e) {
     const { name } = e.target.dataset;
+    wx.request({
+      method: 'GET',
+      url: `https://www.choulovecandy.cn/busname/${name}`,
+      success: (res) => {
+        // console.log(res)
+        wx.setStorage({ key: "sid", data: res.data.sid });
+      }
+    })
     if (name) {
       wx.navigateTo({
         url: '../bus/busDetail?name=' + name
@@ -149,6 +157,14 @@ onReady(){
     if (names.indexOf(inputVal) < 0) {
       App.showModal('提示', '哎呀, 没有找到您查询的路线～', () => { });
     } else {
+      wx.request({
+        method: 'GET',
+        url: `https://www.choulovecandy.cn/busname/${inputVal}`,
+        success: (res) => {
+          // console.log(res)
+          wx.setStorage({ key: "sid", data: res.data.sid });
+        }
+      })
       if (!history.includes(inputVal)) {
         if (history.length >= 8) {
           history.splice(history.length - 1, 1);
@@ -157,6 +173,8 @@ onReady(){
       }
       this.setData({ history });
       wx.setStorage({ key: "history", data: history });
+      // wx.setStorage({ key: "sid", data: history });
+      
       wx.navigateTo({
         url: '../bus/busDetail?name=' + inputVal
       });

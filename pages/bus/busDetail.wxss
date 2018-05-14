@@ -1,4 +1,4 @@
-.bus-detail {
+bellows-wrapper.bus-detail {
   width: 100%;
   height: 99%;
   border-top: 1px solid #ddd;
@@ -150,6 +150,7 @@
   margin: 0 .625rem ;
   padding: .3125rem 0;
   border-top: 1px solid #bdc1c5;
+  color:#187cd7;
 }
 
 .hidden {

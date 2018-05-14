@@ -1,4 +1,4 @@
-const URI = 'https://liudongtushuguan.cn/v2/movie'
+const URI = 'https://www.choulovecandy.cn/movie'
 // const URI ='https://douban.uieee.com/v2/movie'
 // const URI = 'http://t.yushu.im/v2/movie'
 const fetch = require('./fetch')
