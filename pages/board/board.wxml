@@ -24,8 +24,8 @@
                 <text>{{ item.title }}</text>
                 <view class='nob'>
                 <view class='ani'>
-                <image wx:for='{{ item.rating.average>=9.5?r5: item.rating.average>=7.5?r4: item.rating.average>=5.5?r3: item.rating.average>=3.5?r2:item.rating.average>=1.5?r1:r0}}' src="../../static/image/ys.png" class="ys"></image>
-                <image wx:for='{{ item.rating.average>=9.5?r0: item.rating.average>=7.5?r1: item.rating.average>=5.5?r2: item.rating.average>=3.5?r3:item.rating.average>=1.5?r4:r5}}' src="../../static/image/gs.png" class="ys"></image>
+                <image wx:for='{{ item.rating.average>=9.5?r5: item.rating.average>=7.5?r4: item.rating.average>=5.5?r3: item.rating.average>=3.5?r2:item.rating.average>=1.5?r1:r0}}' wx:key="index" src="../../static/image/ys.png" class="ys"></image>
+                <image wx:for='{{ item.rating.average>=9.5?r0: item.rating.average>=7.5?r1: item.rating.average>=5.5?r2: item.rating.average>=3.5?r3:item.rating.average>=1.5?r4:r5}}' wx:key="index" src="../../static/image/gs.png" class="ys"></image>
                 </view>
                 <text class='ranktext' id="{{item.rating.average<1.5?'fcg':'fco'}}">{{item.rating.average}}</text>
                 </view>

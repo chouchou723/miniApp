@@ -18,11 +18,12 @@ Page({
   onLoad: function (option) {
     var vm = this;
     var name = option.name;
+    App.showLoading();
+    const sid = wx.getStorageSync('sid');
     if (!name.length) return;
-
-    Rest.get(
-      '/api/bus/' + encodeURIComponent(name),
-      (res) => {
+    wx.request({
+      url: `https://www.choulovecandy.cn/busstop/${sid}`,
+      success: res => {
         if (res.statusCode === 200) {
           const { lineResults0, lineResults1, busLine } = res.data;
           const { start_stop, end_stop, end_earlytime, end_latetime, start_earlytime, start_latetime } = busLine;
@@ -38,13 +39,14 @@ Page({
             earlytime: end_earlytime,
             latetime: end_latetime
           });
+          App.hideLoading();
           vm.setData({ name, stations: stationsLeft, stationsLeft, stationsRight, noShow: false, busInfo: busLine });
         } else {
           App.showModal('提示', '哎呀，服务器开小差了～刷新一下吧～', () => { wx.navigateBack() });
           vm.setData({ noShow: true });
         }
       }
-    );
+    })
   },
 
   onShareAppMessage() {
@@ -65,7 +67,7 @@ Page({
 
   bindClickStop: function (e) {
     const vm = this;
-    console.log(e)
+    // console.log(e)
     const { name, direction, busInfo } = vm.data;
     const lineId = busInfo.line_id;
     const stopId = e.target.id;

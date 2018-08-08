@@ -1,5 +1,6 @@
 const App = getApp();
 import * as Rest from '../../utils/restUtil';
+import allLine from './allLine';
 Page({
   data: {
     inputShowed: false,
@@ -25,17 +26,23 @@ Page({
   onLoad: function () {
     var vm = this;
     let allLines = wx.getStorageSync('allLines');
+    // console.log(allLine.allLine)
     App.getUserInfo((userInfo) => {
       vm.setData({ userInfo });
       // Rest.post('/api/user/add', userInfo, () => { });
       if (!allLines.length) {
-        Rest.get('/bus/names/all', (res) => {
-          const { data } = res;
-          const lines = data.names.split(',');
-          wx.setStorage({ key: "allLines", data: lines });
-          allLines = lines;
-          vm.setData({ names: allLines });
-        });
+        let d = allLine.allLine;
+        const lines = d.split(',');
+        wx.setStorage({ key: "allLines", data: lines });
+        allLines = lines;
+        vm.setData({ names: allLines });
+        // Rest.get('/bus/names/all', (res) => {
+        //   const { data } = res;
+        //   const lines = data.names.split(',');
+        //   wx.setStorage({ key: "allLines", data: lines });
+        //   allLines = lines;
+        //   vm.setData({ names: allLines });
+        // });
       }
     });
   },
@@ -121,13 +128,13 @@ onReady(){
       success: (res) => {
         // console.log(res)
         wx.setStorage({ key: "sid", data: res.data.sid });
-      }
-    })
     if (name) {
       wx.navigateTo({
         url: '../bus/busDetail?name=' + name
       });
     }
+      }
+    })
   },
 
   bindOnClearAll: function () {
@@ -163,6 +170,9 @@ onReady(){
         success: (res) => {
           // console.log(res)
           wx.setStorage({ key: "sid", data: res.data.sid });
+          wx.navigateTo({
+            url: '../bus/busDetail?name=' + inputVal
+          });
         }
       })
       if (!history.includes(inputVal)) {
@@ -175,9 +185,7 @@ onReady(){
       wx.setStorage({ key: "history", data: history });
       // wx.setStorage({ key: "sid", data: history });
       
-      wx.navigateTo({
-        url: '../bus/busDetail?name=' + inputVal
-      });
+     
     }
   },
   scroll: function (e) {
