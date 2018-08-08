@@ -1,6 +1,5 @@
 <view class="containerB">
  <image src='../../static/image/b.jpg' style='position:absolute;width:100%;height:100%' wx:if="{{dis}}"></image> 
- <image src='../../static/image/b.jpg' style='position:absolute;width:100%;height:100%' wx:if="{{dis}}"></image> 
   <view class="slide">
     <swiper indicator-dots="true" autoplay="true" interval="5000" duration="1000" display-multiple-items="2" >
       <swiper-item wx:for="{{ boards[0].movies }}" wx:key="id" >
