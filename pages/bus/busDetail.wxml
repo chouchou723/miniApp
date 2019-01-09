@@ -12,7 +12,7 @@
       <view class="time">{{'首班: ' + stations.earlytime }}</view>
       <view class="time late-time">{{'末班: ' + stations.latetime }}</view>
     </view>
-    <image class="icon-arrow" src="../../static/image/arrow_w.png" />
+    <image class="icon-arrow" src="../../static/image/arr.png" />
   </view>
   <scroll-view class="scroll-view_H" scroll-y="true" style="width: 100%">
     <view

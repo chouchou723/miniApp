@@ -15,22 +15,24 @@ bellows-wrapper.bus-detail {
 .bus-name {
   font-weight: bold;
   font-family:Arial;
-  font-size: .8125rem;
+  font-size: 1.2rem;
   text-align: left;
   display: inline-block;
   margin-right: 20rpx;
   vertical-align: middle;
+  color:#ea6b3c;
 }
 
 .bus-start-end {
   max-width:90%;
   text-align: left;
-  font-size: .8125rem;
+  font-size: 0.9rem;
   overflow:hidden;
   white-space:nowrap;
   vertical-align: middle;
   text-overflow:íellipsis;
   display: inline-block;
+  color: #ea6b3c;
 }
 
 .station {
@@ -44,17 +46,21 @@ bellows-wrapper.bus-detail {
 }
 
 .station-wraper {
-  width: 90%;
-  display:inline-block;
+  width: 100%;
+  display:flex;
+  justify-content: flex-start;
+  align-items: center;
   padding-bottom: 4rpx;
   overflow:hidden;
   text-overflow:ellipsis;
   white-space:nowrap;
+  margin-bottom:12rpx;
+  flex-wrap: wrap;
 }
 
 .time-wraper {
   width: 90%;
-  color:#a9a9a9;
+  color:#466d90;
   font-family:Arial;
   display:inline-block;
 }
@@ -71,10 +77,10 @@ bellows-wrapper.bus-detail {
 .icon-arrow {
   width: 60rpx;
   float: right;
-  height: 48rpx;
-  display: inline-block;
+  height: 60rpx;
+  /* display: inline-block; */
   vertical-align: top;
-  margin-top:-90rpx;
+  margin-top:-80rpx;
   padding:20rpx;
 
 }
@@ -114,6 +120,7 @@ bellows-wrapper.bus-detail {
   text-align: left;
   font-size: .9375rem;
   padding: .3125rem;
+  /* color: #ea6b3c; */
 }
 
 .icon-traffic {
@@ -132,15 +139,16 @@ bellows-wrapper.bus-detail {
   overflow:hidden;
   text-overflow:ellipsis;
   white-space:nowrap;
+  color: #224667;
 }
 
 .station-name-active {
-  color: #187cd7;
+  color: #ea6b3c;
 }
 
 .icon-arrow-up-down {
-  width:18px;
-  height:16px;
+  width:20px;
+  height:20px;
   margin-left:18rpx;
   display: inline-block;
 }
@@ -149,14 +157,14 @@ bellows-wrapper.bus-detail {
   font-size: .75rem;
   margin: 0 .625rem ;
   padding: .3125rem 0;
-  border-top: 1px solid #bdc1c5;
-  color:#187cd7;
+  border-top: 1px solid #ea6b3c;
+  color:#ea6b3c;
 }
 
 .hidden {
   display: none;
 }
 .ys{
-  border:1px solid #187cd7;
+  border:1px solid #ea6b3c;
 
 }

@@ -82,7 +82,7 @@ Page({
     wx.request({
       url: `https://www.choulovecandy.cn/bus/${sid}/${direction}/${stopIdd}`,
       success:res=>{
-        // console.log(res)
+        console.log(res)
         let tips = '';
         let data = res.data
         App.hideLoading();

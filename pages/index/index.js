@@ -20,10 +20,10 @@ Page({
     wx.navigateTo({
       url: event.target.dataset.hi
     })
-    setTimeout(()=>{
+    // setTimeout(()=>{
 
-    this.setData({ zoomIn: 0 })
-    },1000)
+    // this.setData({ zoomIn: 0 })
+    // },1000)
   },
   onShareAppMessage: function () {
     return {
@@ -59,9 +59,9 @@ Page({
       })
     }
   },
-  // onHide() {
-  //   this.setData({ zoomIn: 0 })
-  // }, 
+  onHide() {
+    this.setData({ zoomIn: 0 })
+  }, 
   getUserInfo: function (e) {//手动获取
     app.globalData.userInfo = e.detail.userInfo
     this.setData({

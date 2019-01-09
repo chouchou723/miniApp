@@ -113,6 +113,7 @@ onReady(){
       inputVal: e.target.id,
       matchedBus: []
     });
+    this.bindOnSearch();
   },
 
   checkBusName: function (data, key) {
@@ -122,11 +123,12 @@ onReady(){
 
   bindOnClickHistory: function (e) {
     const { name } = e.target.dataset;
+    App.showLoading();
     wx.request({
       method: 'GET',
       url: `https://www.choulovecandy.cn/busname/${name}`,
       success: (res) => {
-        // console.log(res)
+        console.log(res)
         wx.setStorage({ key: "sid", data: res.data.sid });
     if (name) {
       wx.navigateTo({
@@ -164,11 +166,11 @@ onReady(){
     if (names.indexOf(inputVal) < 0) {
       App.showModal('提示', '哎呀, 没有找到您查询的路线～', () => { });
     } else {
+      App.showLoading();
       wx.request({
         method: 'GET',
         url: `https://www.choulovecandy.cn/busname/${inputVal}`,
         success: (res) => {
-          // console.log(res)
           wx.setStorage({ key: "sid", data: res.data.sid });
           wx.navigateTo({
             url: '../bus/busDetail?name=' + inputVal
