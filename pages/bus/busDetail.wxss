@@ -73,7 +73,21 @@ bellows-wrapper.bus-detail {
 .late-time {
   margin-left: 30rpx;
 }
-
+.rotateI{
+   animation: 1s myrotate forwards;
+}
+.rotateT{
+   animation: 1s myrotate1 forwards;
+  
+}
+@keyframes myrotate{
+         from {transform:rotate(0deg);}    
+    to    {transform:rotate(-360deg);}
+        }
+        @keyframes myrotate1{
+         from {transform:rotate(0deg);}    
+    to    {transform:rotate(360deg);}
+        }
 .icon-arrow {
   width: 60rpx;
   float: right;

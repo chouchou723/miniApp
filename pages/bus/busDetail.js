@@ -1,4 +1,4 @@
-import * as Rest from '../../utils/restUtil';
+// import * as Rest from '../../utils/restUtil';
 
 const App = getApp();
 
@@ -14,6 +14,7 @@ Page({
     stationsRight: {},
     noShow: true,
     selected:0,
+    rotateId:0
   },
   onLoad: function (option) {
     var vm = this;
@@ -60,9 +61,11 @@ Page({
   onClickSwitch: function (e) {
     const vm = this;
     const { stationsRight, stationsLeft } = vm.data;
+    let {rotateId} = vm.data;
     const stations = !vm.data.direction ? stationsRight : stationsLeft;
     const direction = !vm.data.direction ? 1 : 0;
-    vm.setData({ stations, direction, stopId: '', tips: '' });
+    const ri = rotateId ? ++rotateId : 1 ;
+    vm.setData({ stations, direction, stopId: '', tips: '', rotateId: ri });
   },
 
   bindClickStop: function (e) {

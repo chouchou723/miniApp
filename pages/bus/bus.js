@@ -1,6 +1,6 @@
 const App = getApp();
-import * as Rest from '../../utils/restUtil';
-import allLine from './allLine';
+// import * as Rest from '../../utils/restUtil';
+// import allLine from './allLine';
 Page({
   data: {
     inputShowed: false,
@@ -26,25 +26,19 @@ Page({
   onLoad: function () {
     var vm = this;
     let allLines = wx.getStorageSync('allLines');
-    // console.log(allLine.allLine)
-    App.getUserInfo((userInfo) => {
-      vm.setData({ userInfo });
-      // Rest.post('/api/user/add', userInfo, () => { });
       if (!allLines.length) {
-        let d = allLine.allLine;
-        const lines = d.split(',');
-        wx.setStorage({ key: "allLines", data: lines });
-        allLines = lines;
-        vm.setData({ names: allLines });
-        // Rest.get('/bus/names/all', (res) => {
-        //   const { data } = res;
-        //   const lines = data.names.split(',');
-        //   wx.setStorage({ key: "allLines", data: lines });
-        //   allLines = lines;
-        //   vm.setData({ names: allLines });
-        // });
+        wx.request({
+          method: 'GET',
+          url: `https://www.choulovecandy.cn/allbuslist`,
+          success: (res) => {
+            const { data } = res;
+            const lines = data.allLines;
+            wx.setStorage({ key: "allLines", data: lines });
+            allLines = lines;
+            vm.setData({ names: allLines });
+          }
+        })
       }
-    });
   },
 onReady(){
   wx.getSystemInfo({
@@ -128,7 +122,7 @@ onReady(){
       method: 'GET',
       url: `https://www.choulovecandy.cn/busname/${name}`,
       success: (res) => {
-        console.log(res)
+        // console.log(res)
         wx.setStorage({ key: "sid", data: res.data.sid });
     if (name) {
       wx.navigateTo({
