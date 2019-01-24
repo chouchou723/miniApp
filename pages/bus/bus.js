@@ -123,12 +123,12 @@ onReady(){
       url: `https://www.choulovecandy.cn/busname/${name}`,
       success: (res) => {
         // console.log(res)
-        wx.setStorage({ key: "sid", data: res.data.sid });
-    if (name) {
+        // wx.setStorageSync({ key: "sid", data: res.data.sid });
+    // if (name) {
       wx.navigateTo({
-        url: '../bus/busDetail?name=' + name
+        url: '../bus/busDetail?name=' + name+ '&sid='+res.data.sid
       });
-    }
+    // }
       }
     })
   },
@@ -153,35 +153,58 @@ onReady(){
     });
     this.setData({ history });
   },
-
+  searchAndJump:function(){
+    const { history, inputVal, names } = this.data;
+    wx.request({
+      method: 'GET',
+      url: `https://www.choulovecandy.cn/busname/${inputVal}`,
+      success: (res) => {
+        //wx.setStorageSync({ key: "sid", data: res.data.sid });
+        wx.navigateTo({
+          url: '../bus/busDetail?name=' + inputVal + '&sid=' + res.data.sid
+        });
+      }
+    })
+    if (!history.includes(inputVal)) {
+      if (history.length >= 8) {
+        history.splice(history.length - 1, 1);
+      }
+      history.unshift(inputVal);
+    }
+    this.setData({ history });
+    wx.setStorage({ key: "history", data: history });
+      // wx.setStorage({ key: "sid", data: history });
+  },
+  checkNewList:function(){
+    var vm = this;
+    const {inputVal } = this.data;    
+    App.showLoading();    
+    wx.request({
+      method: 'GET',
+      url: `https://www.choulovecandy.cn/allbuslist`,
+      success: (res) => {
+        const { data } = res;
+        const lines = data.allLines;
+        if (lines.indexOf(inputVal) < 0) {
+          App.hideLoading();
+          App.showModal('提示', '哎呀, 没有找到您查询的路线～', () => { });
+        }else{
+          vm.searchAndJump();
+        }
+        wx.setStorage({ key: "allLines", data: lines });
+        vm.setData({ names: lines });
+      }
+    })
+  },
   bindOnSearch: function () {
     const { history, inputVal, names } = this.data;
     if (!inputVal.length) return;
     if (names.indexOf(inputVal) < 0) {
-      App.showModal('提示', '哎呀, 没有找到您查询的路线～', () => { });
+      this.checkNewList();
+      // App.showModal('提示', '哎呀, 没有找到您查询的路线～', () => { });
     } else {
       App.showLoading();
-      wx.request({
-        method: 'GET',
-        url: `https://www.choulovecandy.cn/busname/${inputVal}`,
-        success: (res) => {
-          wx.setStorage({ key: "sid", data: res.data.sid });
-          wx.navigateTo({
-            url: '../bus/busDetail?name=' + inputVal
-          });
-        }
-      })
-      if (!history.includes(inputVal)) {
-        if (history.length >= 8) {
-          history.splice(history.length - 1, 1);
-        }
-        history.unshift(inputVal);
-      }
-      this.setData({ history });
-      wx.setStorage({ key: "history", data: history });
-      // wx.setStorage({ key: "sid", data: history });
-      
-     
+      this.searchAndJump();
     }
   },
   scroll: function (e) {

@@ -5,6 +5,7 @@ const App = getApp();
 Page({
   data: {
     name: '',
+    sid:'',
     stopId: '',
     direction: 0,
     tips: '',
@@ -20,13 +21,19 @@ Page({
     var vm = this;
     var name = option.name;
     App.showLoading();
-    const sid = wx.getStorageSync('sid');
+    // console.log(name)
+    const sid = option.sid;//wx.getStorageSync('sid');
     if (!name.length) return;
     wx.request({
       url: `https://www.choulovecandy.cn/busstop/${sid}`,
       success: res => {
         if (res.statusCode === 200) {
           const { lineResults0, lineResults1, busLine } = res.data;
+          if (!lineResults0||!lineResults0.stops){
+            App.showModal('提示', '哎呀，服务器开小差了～请稍后重试～', () => { wx.navigateBack() });
+            vm.setData({ noShow: true });
+            return
+          }
           const { start_stop, end_stop, end_earlytime, end_latetime, start_earlytime, start_latetime } = busLine;
           const stationsLeft = Object.assign({}, lineResults0, {
             start: start_stop,
@@ -40,8 +47,16 @@ Page({
             earlytime: end_earlytime,
             latetime: end_latetime
           });
+          if (start_stop){
+            setTimeout(function(){
           App.hideLoading();
-          vm.setData({ name, stations: stationsLeft, stationsLeft, stationsRight, noShow: false, busInfo: busLine });
+            },100)
+          }else{
+            App.showModal('提示', '哎呀，服务器开小差了～请稍后重试～', () => { wx.navigateBack() });
+            vm.setData({ noShow: true });
+            return
+          }
+          vm.setData({ name, sid,stations: stationsLeft, stationsLeft, stationsRight, noShow: false, busInfo: busLine });
         } else {
           App.showModal('提示', '哎呀，服务器开小差了～刷新一下吧～', () => { wx.navigateBack() });
           vm.setData({ noShow: true });
@@ -71,12 +86,12 @@ Page({
   bindClickStop: function (e) {
     const vm = this;
     // console.log(e)
-    const { name, direction, busInfo } = vm.data;
+    const { name, direction, busInfo,sid } = vm.data;
     const lineId = busInfo.line_id;
     const stopId = e.target.id;
     const ss = e.target.dataset.idd-0;
     let stopIdd = ss < 10 ? ss + '.' :ss;
-    const sid = wx.getStorageSync('sid');
+    //const sid = sid;//wx.getStorageSync('sid');
 // this.setData({stopId,tips:"暂未查到信息"})
     // console.log(e)
     if (stopId!=''){
@@ -85,16 +100,16 @@ Page({
     wx.request({
       url: `https://www.choulovecandy.cn/bus/${sid}/${direction}/${stopIdd}`,
       success:res=>{
-        console.log(res)
+        // console.log(res)
         let tips = '';
         let data = res.data
-        App.hideLoading();
         if (data.error == '-2' || data.error == '0'){
           tips = '暂未发车';
         }else{
           tips = '车牌:' + data[0].terminal + ', 剩余' + data[0].stopdis + '站, 约' + Math.ceil(data[0].time / 60) + '分钟';
         }
         vm.setData({ stopId, tips });
+        App.hideLoading();          
       }
     })
     }else{
