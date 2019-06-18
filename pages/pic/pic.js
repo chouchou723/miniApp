@@ -1,5 +1,6 @@
 let col1H = 0;
 let col2H = 0;
+const App = getApp();
 
 Page({
 
@@ -19,6 +20,7 @@ Page({
   },
 
   onLoad: function () {
+    App.showLoading('加载中');
     wx.getSystemInfo({
       success: (res) => {
         let ww = res.windowWidth;
@@ -66,7 +68,7 @@ Page({
           { pic: "../../static/image/p8.jpg", height: 0 ,title:'218我们领证啦~'},
           { pic: "../../static/image/p9.jpg", height: 0 ,title:'携子之手,与子偕老'},
           { pic: "../../static/image/p10.jpg", height: 0 ,title:'可爱的两人~'},
-          { pic: "../../static/image/p11.jpg", height: 0,title:'曾经的美好~' },
+          // { pic: "../../static/image/p11.jpg", height: 0,title:'曾经的美好~' },
         ];
         this.setData({ images: images });
         this.loadImages();
@@ -152,6 +154,8 @@ Page({
       loadingCount: images.length,
       images: images
     });
+    // App.hideLoading();
+
   }
 
 })

@@ -12,6 +12,8 @@
 	"appid": "wxddcdd21836375420",
 	"projectname": "Candy",
 	"isGameTourist": false,
+	"simulatorType": "wechat",
+	"simulatorPluginLibVersion": {},
 	"condition": {
 		"search": {
 			"current": -1,

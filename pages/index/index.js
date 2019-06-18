@@ -7,7 +7,7 @@ Page({
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
     arrayL: [{ id: '1', itemName: '爱の电影', path: '../../static/image/food.png', url: '../board/board' }, { id: '2', itemName: '爱の公交', path: '../../static/image/food2.png', url: '../bus/bus' }, 
-      { id: '3', itemName: '爱の画廊', path: '../../static/image/food3.png', url: '../pic/pic' }, { id: '4', itemName: '爱の计时', path: '../../static/image/food4.png', url: '../form/form'}]
+      { id: '3', itemName: '爱の画廊', path: '../../static/image/food3.png', url: '../pic/pic' }, { id: '4', itemName: '爱の分类', path: '../../static/image/food4.png', url: '../garbage/garbage'}]
   },
   //事件处理函数
   bindViewTap: function () {

@@ -8,7 +8,8 @@
     "pages/list/list",
     "pages/item/item",
     "pages/bus/bus",
-    "pages/bus/busDetail"
+    "pages/bus/busDetail",
+    "pages/garbage/garbage"
   ],
   "window": {
     "backgroundTextStyle": "dark",
@@ -19,5 +20,6 @@
   "networkTimeout": {
     "request": 20000,
     "downloadFile": 20000
-  }
+  },
+  "sitemapLocation": "sitemap.json"
 }
