@@ -20,7 +20,6 @@ Page({
   },
 
   onLoad: function () {
-    App.showLoading('加载中');
     wx.getSystemInfo({
       success: (res) => {
         let ww = res.windowWidth;
@@ -37,8 +36,10 @@ Page({
     })
   },
   wifiGetP(){
+    App.showLoading('加载中');
     wx.getConnectedWifi({
       success: (wifi) => {
+        // console.log(1)
         let images = []
         let url = 'http://www.zyzw.com/sjmhxs/sjmhxst/sjmhxst'
         let jpg = '.jpg'
@@ -55,8 +56,10 @@ Page({
         }
         this.setData({ images: images });
         this.loadImages();
+        // console.log(this.data.images)
       },
       fail: res => {
+        // console.log(2)
         let images = [
           { pic: "../../static/image/p1.jpg", height: 0 ,title:'我好怕怕呀!'},
           { pic: "../../static/image/p2.jpg", height: 0,title:'我要跳的更高~' },
@@ -96,10 +99,31 @@ Page({
     disHeight: e.target.dataset.height*2,
     dis:true
   })
-
+// console.log(e)
+  },
+  errormiss:function(e){
+    let im = this.data.images.filter(item=>{
+      return item.id !== e.target.id
+    })
+    this.setData({
+      images:im
+    })
+    // console.log(this.data.images)
+// console.log(e)
   },
   onImageLoad: function (e) {
+    // console.log(e.detail.height)
+    // if (!e.detail.height){
+    //   console.log(12)
+    //   return 
+    // }
     let imageId = e.currentTarget.id;
+    let loadingCount;
+    // console.log(imageId)
+    if (!imageId){
+     loadingCount = this.data.loadingCount - 1;
+      return
+    }
     let oImgW = e.detail.width;         //图片原始宽度
     let oImgH = e.detail.height;        //图片原始高度
     let imgWidth = this.data.imgWidth;  //图片设置的宽度
@@ -111,15 +135,16 @@ Page({
 
     for (let i = 0; i < images.length; i++) {
       let img = images[i];
+
       if (img.id === imageId) {
         imageObj = img;
+    imageObj.height = imgHeight;
         break;
       }
     }
+    // console.log(imgHeight, imageObj)
 
-    imageObj.height = imgHeight;
-
-    let loadingCount = this.data.loadingCount -1;
+    loadingCount = this.data.loadingCount -1;
     let col1 = this.data.col1;
     let col2 = this.data.col2;
 
@@ -154,6 +179,7 @@ Page({
       loadingCount: images.length,
       images: images
     });
+    // console.log(this.data.images)
     // App.hideLoading();
 
   }
