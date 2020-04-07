@@ -26,8 +26,7 @@
       <view class="stop-item" id="{{item.id}}"  data-idd="{{index+1}}">
         <view
           class="station-name {{ stopId === item.id ? 'station-name-active' : '' }}"
-          id="{{item.id}}" data-idd="{{index+1}}
-        >
+          id="{{item.id}}" data-idd="{{index+1}}">
           {{index+1}}.  {{item.zdmc}}
         </view>
         <image data-idd="{{index+1}}" class="icon-arrow-up-down" src="../../static/image/arrow_{{ stopId === item.id ? 'up' : 'down' }}.png" />

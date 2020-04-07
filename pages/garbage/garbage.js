@@ -45,7 +45,7 @@ if(!data.title){
         //   vm.searchAndJump();
         // }
         // wx.setStorage({ key: "allLines", data: lines });
-        let c = data.content.split('：')[1]
+        let c = data.content//.split('：')[1]
         let type = data.title === '有害垃圾' ? 1 : data.title === '可回收物' ? 2 : data.title === '湿垃圾' ?3:4
         let color = data.title === '有害垃圾' ? '#d73723' : data.title === '可回收物' ? '#00457C' : data.title === '湿垃圾' ? '#653F34' : '#2A2925'
         vm.setData({

@@ -26,7 +26,7 @@ Page({
   onLoad: function () {
     var vm = this;
     let allLines = wx.getStorageSync('allLines');
-      if (!allLines.length) {
+    if (!allLines) {
         wx.request({
           method: 'GET',
           url: `https://www.choulovecandy.cn/allbuslist`,
