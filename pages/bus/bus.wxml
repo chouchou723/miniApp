@@ -37,7 +37,7 @@
   </view>
 
   <view class="history-items" hidden="{{!history.length}}" >
-    <view wx:for="{{history}}" wx:key="{{index}}"
+    <view wx:for="{{history}}" wx:key="item"
       data-name="{{item}}" wx:for-item="item"
       class="history-item" bindtap="bindOnClickHistory">
       <image class="icon-bus" src="../../static/image/bus.png" mode="aspectFill" />
